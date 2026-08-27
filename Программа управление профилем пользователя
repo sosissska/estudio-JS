@@ -1,0 +1,113 @@
+// STEP 1
+
+let name = "Кактус"
+let age = 18
+let subscription = "premium"
+let lastLogin = 0
+
+// STEP 2
+
+function validateAge (age) {
+    if (age <= 0) {
+        console.log("Такого возраста не бывает")
+        return false
+    }
+    else if (age < 18) {
+        console.log("Вы несовершеннолетний пользователь.")
+        return false
+    }
+    else {
+        // console.log("Доступ разрешен")
+        return true
+    }
+}
+
+let validateName = function (name) {
+    if (typeof name !== "string") {
+        console.log("Имя не может быть цифровы значением")
+        return false
+    }
+    
+    else if (name === "") {
+        console.log("Имя не может быть пустым")
+        return false
+    }
+    else {
+        return true
+        // console.log(`Привет, ${name}`)
+    }
+}
+
+let validateSubscription =(subscription) => {
+    if (subscription === "free" ||
+        subscription === "basic" ||
+        subscription === "premium") {
+            return true
+        // console.log("Активная подписка")
+    }
+    else {console.log("У вас нет подписки")}
+}
+
+// STEP 3
+
+function getTimeOfDay (lastLogin) {
+    switch (lastLogin) {
+        case 5:
+        case 6:
+        case 7:
+        case 8:
+        case 9:
+        case 10:
+        case 11:
+            return "утро"
+        case 12:
+        case 13:
+        case 14:
+        case 15:
+        case 16:
+        case 17:
+            return "день"
+        case 18:
+        case 19:
+        case 20:
+        case 21:
+            return "вечер"
+        case 22:
+        case 23:
+        case 0:
+        case 1:
+        case 2:
+        case 3:
+        case 4:
+            return "ночь"
+    }
+}
+// STEP 4
+
+function getAccessLevel (subscription) {
+    if (subscription === "premium") {
+        return "Полный доступ"
+    }
+    else if (subscription === "basic") {
+        return "Ограниченный доступ"
+    }
+    else if (subscription === "free") {
+        return "Доступ только к бесплатному контенту"
+    }
+    else {
+        return "У вас нет активной подписки"
+    }
+}
+
+// STEP 5
+
+
+function displayUserInfo () {
+    let timeOfDay = getTimeOfDay (lastLogin)
+    let accessLevel = getAccessLevel (subscription)
+    if (validateAge(age) && validateName(name) && validateSubscription(subscription)) {
+        console.log(`Привет, ${name}! Вам ${age} лет. Сейчас ${timeOfDay}. Уровень доступа: ${accessLevel}.`)
+    }
+}
+
+displayUserInfo()
