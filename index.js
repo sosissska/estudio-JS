@@ -18,6 +18,10 @@ function setTask(taskDescription) {
     if (task !== "") {
         console.log("Не могу добавить задачу, завершите или удалите предыдущую")
     }
+
+    else if (!taskDescription) {
+        console.log("Нельзя добавить пустую задачу")
+    }
     
     else {
         task = taskDescription
